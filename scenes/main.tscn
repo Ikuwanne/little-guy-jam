@@ -5,14 +5,22 @@
 [node name="Main" type="Node2D" unique_id=1002428161]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1034650350]
-offset_left = -576.0
-offset_top = -321.0
-offset_right = 578.0
-offset_bottom = 323.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1050.9644
+offset_top = -586.5
+offset_right = 1050.9644
+offset_bottom = 586.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1602877310]
 
-[node name="Dwarf" parent="." unique_id=1056602612 instance=ExtResource("1_o5qli")]
+[node name="Dwarf" parent="." unique_id=1056602612 node_paths=PackedStringArray("camera") instance=ExtResource("1_o5qli")]
+camera = NodePath("../Camera2D")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1845023136]
 
