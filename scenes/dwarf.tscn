@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://34akgyk144u3"]
+
+[ext_resource type="Script" uid="uid://hf4cjhxpa8ot" path="res://scripts/dwarf.gd" id="1_wi5fx"]
+[ext_resource type="Texture2D" uid="uid://c45f7fqk7kid" path="res://assets/bad-sasuke-drawing-fanart-v0-uv2ptx8di1k61.webp" id="2_tkefo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tkefo"]
+size = Vector2(68, 64)
+
+[node name="Dwarf" type="CharacterBody2D" unique_id=1056602612]
+script = ExtResource("1_wi5fx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=175963494]
+position = Vector2(-1.9073486e-06, -1.9073486e-06)
+scale = Vector2(0.12749004, 0.12749004)
+texture = ExtResource("2_tkefo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=252289603]
+shape = SubResource("RectangleShape2D_tkefo")

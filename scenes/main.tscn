@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://chkku5q46cdxo"]
+
+[ext_resource type="PackedScene" uid="uid://34akgyk144u3" path="res://scenes/dwarf.tscn" id="1_o5qli"]
+
+[node name="Main" type="Node2D" unique_id=1002428161]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1034650350]
+offset_left = -576.0
+offset_top = -321.0
+offset_right = 578.0
+offset_bottom = 323.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1602877310]
+
+[node name="Dwarf" parent="." unique_id=1056602612 instance=ExtResource("1_o5qli")]
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1845023136]
+
+[node name="Control" type="Control" parent="HUD" unique_id=657827594]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Timer" type="Label" parent="HUD/Control" unique_id=1873272848]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Score" type="Label" parent="HUD/Control" unique_id=701728563]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
