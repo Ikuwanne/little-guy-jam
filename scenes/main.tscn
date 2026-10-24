@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://lyiflmjw1ivm" path="res://assets/Furnitures/MechanicalBelt.png" id="1_jkv2x"]
 [ext_resource type="Texture2D" uid="uid://bllqxeks7nwbs" path="res://assets/Furnitures/MechanicalBeltRotateRight.png" id="1_muem4"]
 [ext_resource type="PackedScene" uid="uid://34akgyk144u3" path="res://scenes/dwarf.tscn" id="1_o5qli"]
-[ext_resource type="Texture2D" uid="uid://we3qpy4du020" path="res://assets/PROTOTYPE.png" id="2_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://cqb8kllx58wgg" path="res://assets/Furnitures/MechanicalBeltRotatingRight2.png" id="2_dp3eg"]
 [ext_resource type="Texture2D" uid="uid://clrmajn4g4uiy" path="res://assets/Furnitures/Floors/TiledFloor.png" id="2_trceg"]
 [ext_resource type="Texture2D" uid="uid://ce8d6jrqe1scx" path="res://assets/Furnitures/Floors/WoodenFloor2.png" id="3_a8y0u"]
@@ -18,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://dpn7igvv2tp4o" path="res://assets/Shoes/BrownShoe.png" id="9_gqmmt"]
 [ext_resource type="Texture2D" uid="uid://bkykrxlkstjip" path="res://assets/package_1.png" id="9_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://c4hj40qe364gw" path="res://assets/package_2.png" id="10_eb6dy"]
+[ext_resource type="FontFile" uid="uid://2ykopy1fg2hv" path="res://assets/CutePixel.ttf" id="12_pm3ni"]
+[ext_resource type="Texture2D" uid="uid://civupdmc67rpd" path="res://assets/interactbutton.png" id="17_pm3ni"]
 [ext_resource type="Texture2D" uid="uid://s7xorpj2bhg3" path="res://assets/Furnitures/chépa.png" id="19_0ld40"]
 [ext_resource type="Texture2D" uid="uid://co2cilt8pkg1k" path="res://assets/TaskBar.png" id="20_yc10j"]
 [ext_resource type="Texture2D" uid="uid://ct77cv0ydgn81" path="res://assets/Shoes/BrownBoot.png" id="21_jscy8"]
@@ -611,29 +612,11 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sugp2"]
-texture = ExtResource("2_0wfyh")
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.74119, -7.0052624, 3.1472912, -6.8022118, 7.0052624, -3.1472921, 6.8022118, 3.2488174, 3.0457668, 6.903737, -2.6396637, 6.903737, -6.7006855, 3.1472921, -6.8022118, -2.9442406)
-1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-0:1/0 = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1.978447, -8, 2.1583042, -8, 2.1583042, 8, -1.978447, 8)
-1:1/0 = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -1.978445, 8, -1.978445, 8, 1.978447, -8, 1.978447)
-
-[sub_resource type="TileSet" id="TileSet_jyhfs"]
-physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_sugp2")
-
 [sub_resource type="Curve2D" id="Curve2D_o6xl0"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -362, -123, 0, 0, 0, 0, 356, -120, 0, 0, 0, 0, 356, 39, 0, 0, 0, 0, -362, 37, 0, 0, 0, 0, -362, 199, 0, 0, 0, 0, 358, 198)
 }
 point_count = 6
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqmmt"]
-size = Vector2(16, 16)
 
 [node name="Main" type="Node2D" unique_id=1002428161]
 
@@ -642,7 +625,7 @@ z_index = -1
 
 [node name="Mechanical Belt 1-1" type="AnimatedSprite2D" parent="Furniture" unique_id=208339750]
 z_index = 1
-position = Vector2(-260, -117)
+position = Vector2(-279, -118)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_5q0nq")
 animation = &"sliding_left"
@@ -651,7 +634,7 @@ frame_progress = 0.3299522
 
 [node name="Mechanical Belt 1-2" type="AnimatedSprite2D" parent="Furniture" unique_id=686526617]
 z_index = 1
-position = Vector2(-140, -117)
+position = Vector2(-159, -118)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_5q0nq")
 animation = &"sliding_left"
@@ -659,7 +642,7 @@ autoplay = "sliding_left"
 
 [node name="Mechanical Belt 1-3" type="AnimatedSprite2D" parent="Furniture" unique_id=1069460345]
 z_index = 1
-position = Vector2(-20, -117)
+position = Vector2(-39, -118)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_5q0nq")
 animation = &"sliding_left"
@@ -667,7 +650,7 @@ autoplay = "sliding_left"
 
 [node name="Mechanical Belt 1-4" type="AnimatedSprite2D" parent="Furniture" unique_id=1218830210]
 z_index = 1
-position = Vector2(100, -117)
+position = Vector2(81, -118)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_5q0nq")
 animation = &"sliding_left"
@@ -675,7 +658,7 @@ autoplay = "sliding_left"
 
 [node name="Mechanical Belt 1-5" type="AnimatedSprite2D" parent="Furniture" unique_id=279416445]
 z_index = 1
-position = Vector2(220, -117)
+position = Vector2(201, -118)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_5q0nq")
 animation = &"sliding_left"
@@ -683,11 +666,132 @@ autoplay = "sliding_left"
 
 [node name="Mechanical Belt 1-6" type="AnimatedSprite2D" parent="Furniture" unique_id=1991208030]
 z_index = 1
-position = Vector2(340, -117)
+position = Vector2(321, -118)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_5q0nq")
 animation = &"rotating_right"
 autoplay = "rotating_right"
+
+[node name="Mechanical Belt 1-7" type="AnimatedSprite2D" parent="Furniture" unique_id=147626358]
+z_index = 1
+position = Vector2(359, -41)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_5q0nq")
+animation = &"sliding_down"
+autoplay = "sliding_down"
+frame_progress = 0.94989854
+
+[node name="Mechanical Belt 1-8" type="AnimatedSprite2D" parent="Furniture" unique_id=314069018]
+z_index = 1
+position = Vector2(321, 38)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_5q0nq")
+animation = &"rotating_rigth2"
+autoplay = "rotating_rigth2"
+flip_h = true
+
+[node name="Mechanical Belt 1-9" type="AnimatedSprite2D" parent="Furniture" unique_id=958027449]
+z_index = 1
+position = Vector2(201, 54)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_5q0nq")
+animation = &"sliding_right"
+autoplay = "sliding_right"
+
+[node name="Mechanical Belt 1-10" type="AnimatedSprite2D" parent="Furniture" unique_id=250803144]
+z_index = 1
+position = Vector2(81, 54)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_5q0nq")
+animation = &"sliding_right"
+autoplay = "sliding_right"
+
+[node name="Mechanical Belt 1-11" type="AnimatedSprite2D" parent="Furniture" unique_id=1513510799]
+z_index = 1
+position = Vector2(-39, 54)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_5q0nq")
+animation = &"sliding_right"
+autoplay = "sliding_right"
+
+[node name="Mechanical Belt 1-12" type="AnimatedSprite2D" parent="Furniture" unique_id=17860748]
+z_index = 1
+position = Vector2(-159, 54)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_5q0nq")
+animation = &"sliding_right"
+autoplay = "sliding_right"
+
+[node name="Mechanical Belt 1-13" type="AnimatedSprite2D" parent="Furniture" unique_id=1185923845]
+z_index = 1
+position = Vector2(-278, 54)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_5q0nq")
+animation = &"rotating_right"
+autoplay = "rotating_right"
+flip_h = true
+
+[node name="Mechanical Belt 1-14" type="AnimatedSprite2D" parent="Furniture" unique_id=1569671173]
+z_index = 1
+position = Vector2(-317, 125)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_5q0nq")
+animation = &"sliding_down"
+autoplay = "sliding_down"
+frame_progress = 0.6771713
+
+[node name="Mechanical Belt 1-15" type="AnimatedSprite2D" parent="Furniture" unique_id=1252957167]
+z_index = 1
+position = Vector2(-279, 199)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_5q0nq")
+animation = &"rotating_rigth2"
+autoplay = "rotating_rigth2"
+
+[node name="Mechanical Belt 1-16" type="AnimatedSprite2D" parent="Furniture" unique_id=465875465]
+z_index = 1
+position = Vector2(-160, 215)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_5q0nq")
+animation = &"sliding_left"
+autoplay = "sliding_left"
+
+[node name="Mechanical Belt 1-17" type="AnimatedSprite2D" parent="Furniture" unique_id=709587565]
+z_index = 1
+position = Vector2(-40, 215)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_5q0nq")
+animation = &"sliding_left"
+autoplay = "sliding_left"
+
+[node name="Mechanical Belt 1-18" type="AnimatedSprite2D" parent="Furniture" unique_id=1244731961]
+z_index = 1
+position = Vector2(80, 214)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_5q0nq")
+animation = &"sliding_left"
+autoplay = "sliding_left"
+
+[node name="Mechanical Belt 1-19" type="AnimatedSprite2D" parent="Furniture" unique_id=2044128420]
+z_index = 1
+position = Vector2(199, 214)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_5q0nq")
+animation = &"sliding_left"
+autoplay = "sliding_left"
+
+[node name="Mechanical Belt 1-20" type="AnimatedSprite2D" parent="Furniture" unique_id=1750759901]
+z_index = 1
+position = Vector2(317, 214)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_5q0nq")
+animation = &"sliding_left"
+autoplay = "sliding_left"
+
+[node name="Chépa" type="Sprite2D" parent="Furniture" unique_id=279513040]
+position = Vector2(409, 200)
+scale = Vector2(4, 4)
+texture = ExtResource("19_0ld40")
 
 [node name="Floors" type="Node2D" parent="." unique_id=901558162]
 z_index = -10
@@ -767,6 +871,50 @@ texture = ExtResource("10_eb6dy")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1845023136]
 
+[node name="TaskBar" type="Sprite2D" parent="HUD" unique_id=1689008546]
+position = Vector2(84, 174)
+scale = Vector2(12.000002, 12.000002)
+texture = ExtResource("20_yc10j")
+
+[node name="TaskBar2" type="Sprite2D" parent="HUD" unique_id=1495753796]
+position = Vector2(84, 303)
+scale = Vector2(12.000002, 12.000002)
+texture = ExtResource("20_yc10j")
+
+[node name="TaskBar3" type="Sprite2D" parent="HUD" unique_id=214554609]
+position = Vector2(84, 433)
+scale = Vector2(12.000002, 12.000002)
+texture = ExtResource("20_yc10j")
+
+[node name="NextShoe1" type="Sprite2D" parent="HUD" unique_id=1802958711]
+position = Vector2(85, 176)
+scale = Vector2(5, 5)
+texture = ExtResource("21_jscy8")
+script = ExtResource("22_jscy8")
+
+[node name="Packaging" type="Sprite2D" parent="HUD/NextShoe1" unique_id=788200868]
+modulate = Color(1, 1, 1, 0.30588236)
+
+[node name="NextShoe2" type="Sprite2D" parent="HUD" unique_id=1128796677]
+position = Vector2(89.00003, 305)
+scale = Vector2(5, 5)
+texture = ExtResource("21_jscy8")
+script = ExtResource("22_jscy8")
+task_id = 1
+
+[node name="Packaging" type="Sprite2D" parent="HUD/NextShoe2" unique_id=1571529177]
+modulate = Color(1, 1, 1, 0.30588236)
+
+[node name="NextShoe3" type="Sprite2D" parent="HUD" unique_id=954266085]
+position = Vector2(85, 433.00003)
+scale = Vector2(5, 5)
+texture = ExtResource("21_jscy8")
+script = ExtResource("22_jscy8")
+task_id = 2
+
+[node name="Packaging" type="Sprite2D" parent="HUD/NextShoe3" unique_id=770159182]
+modulate = Color(1, 1, 1, 0.30588236)
+
 [node name="Control" type="Control" parent="HUD" unique_id=657827594]
 layout_mode = 3
 anchors_preset = 0
@@ -775,11 +923,22 @@ offset_top = -1.0
 offset_right = 1152.0
 offset_bottom = 648.0
 
+[node name="Score2" type="Label" parent="HUD/Control" unique_id=334611799]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 529.0
+offset_right = 639.0
+offset_bottom = 640.0
+theme_override_fonts/font = ExtResource("12_pm3ni")
+theme_override_font_sizes/font_size = 94
+text = "Score"
+
 [node name="Timer" type="Label" parent="HUD/Control" unique_id=1873272848]
 unique_name_in_owner = true
 layout_mode = 0
 offset_right = 1149.0
 offset_bottom = 130.0
+theme_override_fonts/font = ExtResource("12_pm3ni")
 theme_override_font_sizes/font_size = 61
 text = "00:00"
 horizontal_alignment = 1
@@ -789,9 +948,13 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="Dwarf" parent="." unique_id=1056602612 node_paths=PackedStringArray("camera", "task_manager", "area_detector_shape_1", "area_detector_shape_2", "area_detector_color_1", "area_detector_color_2", "area_detector_package_1", "area_detector_package_2") instance=ExtResource("1_o5qli")]
+[node name="SpaceInteraction" type="Sprite2D" parent="HUD" unique_id=1007271085]
+position = Vector2(1086, 583)
+scale = Vector2(5.4999995, 5.4999995)
+texture = ExtResource("17_pm3ni")
+
+[node name="Dwarf" parent="." unique_id=1056602612 node_paths=PackedStringArray("camera", "area_detector_shape_1", "area_detector_shape_2", "area_detector_color_1", "area_detector_color_2", "area_detector_package_1", "area_detector_package_2") instance=ExtResource("1_o5qli")]
 camera = NodePath("../Camera2D")
-task_manager = NodePath("../Task List")
 area_detector_shape_1 = NodePath("../AreaShape1")
 area_detector_shape_2 = NodePath("../AreaShape2")
 area_detector_color_1 = NodePath("../AreaColor1")
@@ -801,12 +964,6 @@ area_detector_package_2 = NodePath("../AreaPackage2")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1602877310]
 unique_name_in_owner = true
-
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1901802126]
-modulate = Color(0.7581918, 0.7581918, 0.7581917, 1)
-scale = Vector2(5, 5)
-tile_map_data = PackedByteArray(0, 0, 251, 255, 254, 255, 0, 0, 1, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 251, 255, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 251, 255, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 4, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-tile_set = SubResource("TileSet_jyhfs")
 
 [node name="Timer" type="Timer" parent="." unique_id=1076778620]
 wait_time = 300.0
@@ -840,10 +997,12 @@ position = Vector2(155, -122)
 scale = Vector2(1.755, 1.755)
 
 [node name="AreaColor1" parent="." unique_id=1040395401 instance=ExtResource("7_o6xl0")]
+modulate = Color(0.9999998, 0.0031077545, 0.08878843, 1)
 position = Vector2(-129, 40)
 scale = Vector2(1.755, 1.755)
 
 [node name="AreaColor2" parent="." unique_id=553605697 instance=ExtResource("7_o6xl0")]
+modulate = Color(0.08799953, 0.6247628, 0.80372447, 1)
 position = Vector2(154, 40)
 scale = Vector2(1.755, 1.755)
 
@@ -854,78 +1013,5 @@ scale = Vector2(1.755, 1.755)
 [node name="AreaPackage2" parent="." unique_id=740911416 instance=ExtResource("7_o6xl0")]
 position = Vector2(147, 203)
 scale = Vector2(1.755, 1.755)
-
-[node name="TaskManager" type="Sprite2D" parent="." unique_id=66053458]
-z_index = -5
-position = Vector2(-512, -278)
-scale = Vector2(4, 4)
-texture = ExtResource("19_0ld40")
-
-[node name="Tasks" type="Area2D" parent="TaskManager" unique_id=1714103172]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TaskManager/Tasks" unique_id=2041175811]
-shape = SubResource("RectangleShape2D_gqmmt")
-
-[node name="Task List" type="NinePatchRect" parent="." unique_id=1319296258]
-z_index = 100
-offset_left = -362.5
-offset_top = -1000.0
-offset_right = -327.0
-offset_bottom = -968.1
-scale = Vector2(20, 20)
-texture = ExtResource("20_yc10j")
-patch_margin_left = 1
-patch_margin_top = 1
-patch_margin_right = 1
-patch_margin_bottom = 2
-
-[node name="Label" type="RichTextLabel" parent="Task List" unique_id=1158054752]
-layout_mode = 0
-offset_left = 1.0499985
-offset_top = 1.0
-offset_right = 335.55
-offset_bottom = 291.0
-scale = Vector2(0.1, 0.1)
-theme_override_font_sizes/normal_font_size = 34
-text = "Next Shoe:"
-
-[node name="NextShoe1" type="Sprite2D" parent="Task List" unique_id=829693431]
-position = Vector2(17.75, 13.4)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("21_jscy8")
-script = ExtResource("22_jscy8")
-
-[node name="Packaging" type="Sprite2D" parent="Task List/NextShoe1" unique_id=694217041]
-modulate = Color(1, 1, 1, 0.30588236)
-
-[node name="NextShoe2" type="Sprite2D" parent="Task List" unique_id=1802958711]
-position = Vector2(17.75, 24.94)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("21_jscy8")
-script = ExtResource("22_jscy8")
-task_id = 1
-
-[node name="Packaging" type="Sprite2D" parent="Task List/NextShoe2" unique_id=788200868]
-modulate = Color(1, 1, 1, 0.30588236)
-
-[node name="NextShoe3" type="Sprite2D" parent="Task List" unique_id=1128796677]
-position = Vector2(7.75, 24.94)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("21_jscy8")
-script = ExtResource("22_jscy8")
-task_id = 2
-
-[node name="Packaging" type="Sprite2D" parent="Task List/NextShoe3" unique_id=1571529177]
-modulate = Color(1, 1, 1, 0.30588236)
-
-[node name="NextShoe4" type="Sprite2D" parent="Task List" unique_id=954266085]
-position = Vector2(27.75, 24.94)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("21_jscy8")
-script = ExtResource("22_jscy8")
-task_id = 3
-
-[node name="Packaging" type="Sprite2D" parent="Task List/NextShoe4" unique_id=770159182]
-modulate = Color(1, 1, 1, 0.30588236)
 
 [connection signal="timeout" from="ShoesSpawn" to="ShoesSpawner" method="_on_shoes_spawn_timeout"]

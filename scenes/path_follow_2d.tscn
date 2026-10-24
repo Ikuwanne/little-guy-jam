@@ -4,7 +4,8 @@
 
 [node name="PathFollow2D" type="PathFollow2D" unique_id=1954371928]
 rotation = 0.004178249
+rotates = false
 cubic_interp = false
 loop = false
 script = ExtResource("1_6ta3s")
-speed = 50
+speed = 100

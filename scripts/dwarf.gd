@@ -17,6 +17,10 @@ var can_interact: bool
 @export var area_detector_package_1: Area2D
 @export var area_detector_package_2: Area2D
 
+
+@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+var last_direction := "down"
+
 func _physics_process(delta):
 	
 	var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -26,65 +30,83 @@ func _physics_process(delta):
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, deceleration_speed * delta)
 	
-	if Input.is_action_pressed("run"):
-		speed = 500
-		acceleration_speed = 1400
-		if velocity.x > speed * 0.5 or velocity.y > speed * 0.5:
-			camera.zoom = camera.zoom.move_toward(Vector2.ONE / zoom, delta/2)
-		else :
-			camera.zoom = camera.zoom.move_toward(Vector2.ONE, delta/2)
-	else :
-		camera.zoom = camera.zoom.move_toward(Vector2.ONE, delta/2)
-		if speed != 300:
-			speed = 300
-			acceleration_speed = 1200
+	if direction != Vector2.ZERO:
+		if abs(direction.x) > abs(direction.y):
+			last_direction = "right" if direction.x > 0 else "left"
+		else:
+			last_direction = "down" if direction.y > 0 else "up"
+		anim.play("walk_" + last_direction)
+	else:
+		anim.animation = "walk_" + last_direction
+		anim.stop()
+		anim.frame = 0
+	
+	
 	
 	if Input.is_action_just_pressed("Interact") and area_detector_shape_1.can_interact():
-		var shoes_area: Area2D = area_detector_shape_1.shoes_in_area[0]
-		var sprite: Sprite2D = shoes_area.get_node("Sprite2D")
-		sprite.texture = preload("res://assets/Shoes/BrownSneaker.png")
+		var sprite: Sprite2D = area_detector_shape_1.shoes_in_area[0].get_node("Sprite2D")
+		juicy_change(sprite, preload("res://assets/Shoes/BrownSneaker.png"))
 		
 	if Input.is_action_just_pressed("Interact") and area_detector_shape_2.can_interact():
-		var shoes_area: Area2D = area_detector_shape_2.shoes_in_area[0]
-		var sprite: Sprite2D = shoes_area.get_node("Sprite2D")
-		sprite.texture = preload("res://assets/Shoes/BrownShoe.png")
+		var sprite: Sprite2D = area_detector_shape_2.shoes_in_area[0].get_node("Sprite2D")
+		juicy_change(sprite, preload("res://assets/Shoes/BrownShoe.png"))
 		
 	if Input.is_action_just_pressed("Interact") and area_detector_color_1.can_interact():
-		var shoes_area: Area2D = area_detector_color_1.shoes_in_area[0]
-		var shoes = shoes_area.get_child(0)   # root of the shoe scene
-		if "Boot" in shoes.texture.resource_path.get_file():
-			shoes.texture = preload("res://assets/Shoes/RedBoot.png")
-		if "Sneaker" in shoes.texture.resource_path.get_file():
-			shoes.texture = preload("res://assets/Shoes/RedSneaker.png")
-		if "Shoe" in shoes.texture.resource_path.get_file():
-			shoes.texture = preload("res://assets/Shoes/RedShoe.png")
+		var shoes: Sprite2D = area_detector_color_1.shoes_in_area[0].get_child(0)
+		var file := shoes.texture.resource_path.get_file()
+		if "Boot" in file:
+			juicy_change(shoes, preload("res://assets/Shoes/RedBoot.png"))
+		elif "Sneaker" in file:
+			juicy_change(shoes, preload("res://assets/Shoes/RedSneaker.png"))
+		elif "Shoe" in file:
+			juicy_change(shoes, preload("res://assets/Shoes/RedShoe.png"))
 		
 	if Input.is_action_just_pressed("Interact") and area_detector_color_2.can_interact():
-		var shoes_area: Area2D = area_detector_color_2.shoes_in_area[0]
-		var shoes = shoes_area.get_child(0)   # root of the shoe scene
-		if "Boot" in shoes.texture.resource_path.get_file():
-			shoes.texture = preload("res://assets/Shoes/BlueBoot.png")
-		if "Sneaker" in shoes.texture.resource_path.get_file():
-			shoes.texture = preload("res://assets/Shoes/BlueSneaker.png")
-		if "Shoe" in shoes.texture.resource_path.get_file():
-			shoes.texture = preload("res://assets/Shoes/BlueShoe.png")
+		var shoes: Sprite2D = area_detector_color_2.shoes_in_area[0].get_child(0)
+		var file := shoes.texture.resource_path.get_file()
+		if "Boot" in file:
+			juicy_change(shoes, preload("res://assets/Shoes/BlueBoot.png"))
+		elif "Sneaker" in file:
+			juicy_change(shoes, preload("res://assets/Shoes/BlueSneaker.png"))
+		elif "Shoe" in file:
+			juicy_change(shoes, preload("res://assets/Shoes/BlueShoe.png"))
 		
 	if Input.is_action_just_pressed("Interact") and area_detector_package_1.can_interact():
-		var shoes_area: Area2D = area_detector_package_1.shoes_in_area[0]
-		var sprite: Sprite2D = shoes_area.get_node("Package")
-		sprite.texture = preload("res://assets/package_1.png")
+		var sprite: Sprite2D = area_detector_package_1.shoes_in_area[0].get_node("Package")
+		juicy_change(sprite, preload("res://assets/package_1.png"))
 		
 	if Input.is_action_just_pressed("Interact") and area_detector_package_2.can_interact():
-		var shoes_area: Area2D = area_detector_package_2.shoes_in_area[0]
-		var sprite: Sprite2D = shoes_area.get_node("Package")
-		sprite.texture = preload("res://assets/package_2.png")
+		var sprite: Sprite2D = area_detector_package_2.shoes_in_area[0].get_node("Package")
+		juicy_change(sprite, preload("res://assets/package_2.png"))
 	
 	move_and_slide()
-
-func _on_area_detect_area_entered(area: Area2D) -> void:
-	if area.name == "Tasks":
-		create_tween().tween_property(task_manager, "position:y", -320.0, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
-
-func _on_area_detect_area_exited(area: Area2D) -> void:
-	if area.name == "Tasks":
-		create_tween().tween_property(task_manager, "position:y", -1000.0, 0.5).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
+	
+func juicy_change(sprite: Sprite2D, new_texture: Texture2D) -> void:
+	# On mémorise l'échelle d'origine une seule fois (évite que l'échelle dérive si on spamme)
+	if not sprite.has_meta("base_scale"):
+		sprite.set_meta("base_scale", sprite.scale)
+	var base: Vector2 = sprite.get_meta("base_scale")
+	
+	# On coupe l'ancien tween s'il tourne encore
+	if sprite.has_meta("juice_tween"):
+		var old: Tween = sprite.get_meta("juice_tween")
+		if old and old.is_valid():
+			old.kill()
+	
+	# Changement de texture + flash blanc
+	sprite.texture = new_texture
+	sprite.scale = base
+	sprite.modulate = Color(2, 2, 2)
+	
+	# Tween lié au sprite (se coupe tout seul si la chaussure est supprimée)
+	var tween := sprite.create_tween()
+	sprite.set_meta("juice_tween", tween)
+	
+	# 1) Écrasement rapide
+	tween.tween_property(sprite, "scale", base * Vector2(1.3, 0.7), 0.08)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	# 2) Rebond élastique vers la taille normale + retour de la couleur
+	tween.tween_property(sprite, "scale", base, 0.45)\
+		.set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+	tween.parallel().tween_property(sprite, "modulate", Color.WHITE, 0.25)
+	

@@ -149,8 +149,8 @@ script = ExtResource("1_wi5fx")
 position = Vector2(0, -35)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_rahrd")
-animation = &"walk_down"
-frame_progress = 0.42195413
+animation = &"walk_up"
+frame_progress = 0.6128258
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=175963494]
 visible = false

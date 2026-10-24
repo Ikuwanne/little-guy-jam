@@ -6,6 +6,7 @@ func _process(delta):
 	
 	var shoe_id = GlobalVariables.shoe_task[task_id]
 	
+	
 	if shoe_id in [2,5,8,11,14,17,20,23,26]:
 		self.get_child(0).texture = preload("res://assets/package_1.png")
 	if shoe_id in [3,6,9,12,15,18,21,24,27]:

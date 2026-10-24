@@ -3,6 +3,7 @@ extends Area2D
 var shoes_in_area: Array[Area2D] = []
 var is_player: bool
 
+
 func is_shoes_in_area() -> bool:
 	return not shoes_in_area.is_empty()
 
