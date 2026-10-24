@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do3f6qfc2skox"
-path="res://.godot/imported/shape2_shoes.png-1b184e5d06f8fea18a13c11ab25d0a7d.ctex"
+uid="uid://desnde8l8exv3"
+path="res://.godot/imported/MechanicalBeltUp.png-29fbbc5a4b2f9169c7658db4cb5f0790.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/shape2_shoes.png"
-dest_files=["res://.godot/imported/shape2_shoes.png-1b184e5d06f8fea18a13c11ab25d0a7d.ctex"]
+source_file="res://assets/Furnitures/MechanicalBeltUp.png"
+dest_files=["res://.godot/imported/MechanicalBeltUp.png-29fbbc5a4b2f9169c7658db4cb5f0790.ctex"]
 
 [params]
 

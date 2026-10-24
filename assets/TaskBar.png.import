@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7aenklj38aw8"
-path="res://.godot/imported/base_shoes.png-d2b7312fe2e193cab937ead2df961006.ctex"
+uid="uid://co2cilt8pkg1k"
+path="res://.godot/imported/TaskBar.png-8b61b01593c6ce32ac1a9bf2f465c60f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/base_shoes.png"
-dest_files=["res://.godot/imported/base_shoes.png-d2b7312fe2e193cab937ead2df961006.ctex"]
+source_file="res://assets/TaskBar.png"
+dest_files=["res://.godot/imported/TaskBar.png-8b61b01593c6ce32ac1a9bf2f465c60f.ctex"]
 
 [params]
 

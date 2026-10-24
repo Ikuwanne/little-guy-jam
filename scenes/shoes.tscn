@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cdjw38io0s5qu"]
 
-[ext_resource type="Texture2D" uid="uid://c7aenklj38aw8" path="res://assets/base_shoes.png" id="1_mwu84"]
-[ext_resource type="Texture2D" uid="uid://c4hj40qe364gw" path="res://assets/package_2.png" id="2_epubc"]
+[ext_resource type="Texture2D" uid="uid://ct77cv0ydgn81" path="res://assets/Shoes/BrownBoot.png" id="1_mwu84"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mwu84"]
 size = Vector2(67, 61)
@@ -15,11 +14,9 @@ texture = ExtResource("1_mwu84")
 region_rect = Rect2(16, 0, 16, 16)
 
 [node name="Package" type="Sprite2D" parent="." unique_id=969761660]
-visible = false
 modulate = Color(1, 1, 1, 0.5254902)
 position = Vector2(-1.0000076, -6.999998)
 scale = Vector2(5.895, 5.895)
-texture = ExtResource("2_epubc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1845989361]
 position = Vector2(-1, 1.5)
