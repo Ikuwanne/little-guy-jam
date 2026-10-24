@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dsyss35ne6x10"]
+
+[ext_resource type="Script" uid="uid://ceclkkpvtd4bx" path="res://scripts/path_follow_2d.gd" id="1_6ta3s"]
+
+[node name="PathFollow2D" type="PathFollow2D" unique_id=1954371928]
+rotation = 0.004178249
+cubic_interp = false
+loop = false
+script = ExtResource("1_6ta3s")
+speed = 50

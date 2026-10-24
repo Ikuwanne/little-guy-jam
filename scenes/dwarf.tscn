@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tkefo"]
 size = Vector2(68, 64)
 
-[node name="Dwarf" type="CharacterBody2D" unique_id=1056602612]
+[node name="Dwarf" type="CharacterBody2D" unique_id=1056602612 groups=["player"]]
 script = ExtResource("1_wi5fx")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=175963494]
@@ -14,5 +14,12 @@ position = Vector2(-1.9073486e-06, -1.9073486e-06)
 scale = Vector2(0.12749004, 0.12749004)
 texture = ExtResource("2_tkefo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=252289603]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1043448087]
 shape = SubResource("RectangleShape2D_tkefo")
+
+[node name="AreaDetect" type="Area2D" parent="." unique_id=725588654 groups=["player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDetect" unique_id=252289603]
+shape = SubResource("RectangleShape2D_tkefo")
+
+[connection signal="area_entered" from="AreaDetect" to="." method="_on_area_detect_area_entered"]

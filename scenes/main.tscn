@@ -1,6 +1,37 @@
-[gd_scene format=3 uid="uid://chkku5q46cdxo"]
+[gd_scene format=4 uid="uid://chkku5q46cdxo"]
 
 [ext_resource type="PackedScene" uid="uid://34akgyk144u3" path="res://scenes/dwarf.tscn" id="1_o5qli"]
+[ext_resource type="Texture2D" uid="uid://we3qpy4du020" path="res://assets/PROTOTYPE.png" id="2_0wfyh"]
+[ext_resource type="Script" uid="uid://ca2jhkrpq07mf" path="res://scripts/timer.gd" id="3_sugp2"]
+[ext_resource type="Script" uid="uid://drmn5y2oig8nv" path="res://scripts/shoes_spawner.gd" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://cdjw38io0s5qu" path="res://scenes/shoes.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://dsyss35ne6x10" path="res://scenes/path_follow_2d.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://b4vxo8mievb0" path="res://scenes/area_detector.tscn" id="7_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://cv2f18wxqe8ls" path="res://assets/shape1_shoes.png" id="8_85g3d"]
+[ext_resource type="Texture2D" uid="uid://do3f6qfc2skox" path="res://assets/shape2_shoes.png" id="9_choun"]
+[ext_resource type="Texture2D" uid="uid://bkykrxlkstjip" path="res://assets/package_1.png" id="9_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://c4hj40qe364gw" path="res://assets/package_2.png" id="10_eb6dy"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sugp2"]
+texture = ExtResource("2_0wfyh")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.74119, -7.0052624, 3.1472912, -6.8022118, 7.0052624, -3.1472921, 6.8022118, 3.2488174, 3.0457668, 6.903737, -2.6396637, 6.903737, -6.7006855, 3.1472921, -6.8022118, -2.9442406)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1.978447, -8, 2.1583042, -8, 2.1583042, 8, -1.978447, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -1.978445, 8, -1.978445, 8, 1.978447, -8, 1.978447)
+
+[sub_resource type="TileSet" id="TileSet_jyhfs"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_sugp2")
+
+[sub_resource type="Curve2D" id="Curve2D_o6xl0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -362, -123, 0, 0, 0, 0, 356, -120, 0, 0, 0, 0, 361, 42, 0, 0, 0, 0, -362, 37, 0, 0, 0, 0, -362, 199, 0, 0, 0, 0, 358, 198)
+}
+point_count = 6
 
 [node name="Main" type="Node2D" unique_id=1002428161]
 
@@ -16,26 +47,115 @@ offset_right = 1050.9644
 offset_bottom = 586.5
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1602877310]
-
-[node name="Dwarf" parent="." unique_id=1056602612 node_paths=PackedStringArray("camera") instance=ExtResource("1_o5qli")]
-camera = NodePath("../Camera2D")
+color = Color(0.21367359, 0.21939957, 0.23521563, 1)
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1845023136]
 
 [node name="Control" type="Control" parent="HUD" unique_id=657827594]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 1152.0
+offset_bottom = 648.0
 
 [node name="Timer" type="Label" parent="HUD/Control" unique_id=1873272848]
+unique_name_in_owner = true
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_right = 1149.0
+offset_bottom = 130.0
+theme_override_font_sizes/font_size = 61
+text = "00:00"
+horizontal_alignment = 1
 
 [node name="Score" type="Label" parent="HUD/Control" unique_id=701728563]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="Dwarf" parent="." unique_id=1056602612 node_paths=PackedStringArray("camera", "area_detector_shape_1", "area_detector_shape_2", "area_detector_color_1", "area_detector_color_2", "area_detector_package_1", "area_detector_package_2") instance=ExtResource("1_o5qli")]
+camera = NodePath("../Camera2D")
+area_detector_shape_1 = NodePath("../AreaShape1")
+area_detector_shape_2 = NodePath("../AreaShape2")
+area_detector_color_1 = NodePath("../AreaColor1")
+area_detector_color_2 = NodePath("../AreaColor2")
+area_detector_package_1 = NodePath("../AreaPackage1")
+area_detector_package_2 = NodePath("../AreaPackage2")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1602877310]
+unique_name_in_owner = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1901802126]
+modulate = Color(0.7581918, 0.7581918, 0.7581917, 1)
+scale = Vector2(5, 5)
+tile_map_data = PackedByteArray("AAD7//7/AAABAAAAAAD8//7/AAABAAEAAAD9//7/AAABAAEAAAD+//7/AAABAAEAAAD///7/AAABAAEAAAAAAP7/AAABAAEAAAABAP7/AAABAAEAAAACAP7/AAABAAEAAAADAP7/AAABAAEAAAAEAP7/AAABAAAAAAAEAP//AAAAAAEAAAAEAAAAAAABAAAAAAD7/wAAAAABAAAAAAD7/wIAAAABAAAAAAAEAAIAAAAAAAAAAAADAAAAAAABAAEAAAACAAAAAAABAAEAAAABAAAAAAABAAEAAAAAAAAAAAABAAEAAAD//wAAAAABAAEAAAD+/wAAAAABAAEAAAD9/wAAAAABAAEAAAD8/wAAAAABAAEAAAD8/wIAAAABAAEAAAD9/wIAAAABAAEAAAD+/wIAAAABAAEAAAD//wIAAAABAAEAAAAAAAIAAAABAAEAAAABAAIAAAABAAEAAAACAAIAAAABAAEAAAADAAIAAAABAAEAAAD7/wEAAAAAAAEAAAA=")
+tile_set = SubResource("TileSet_jyhfs")
+
+[node name="Timer" type="Timer" parent="." unique_id=1076778620]
+wait_time = 300.0
+one_shot = true
+autostart = true
+script = ExtResource("3_sugp2")
+
+[node name="ShoesSpawner" type="Marker2D" parent="." unique_id=1663086855 node_paths=PackedStringArray("path")]
+position = Vector2(-359, -122)
+script = ExtResource("4_jyhfs")
+shoes = ExtResource("5_tbgi4")
+path_follower = ExtResource("6_tefeu")
+path = NodePath("../Path2D")
+
+[node name="ShoesSpawn" type="Timer" parent="." unique_id=1041535128]
+wait_time = 5.0
+autostart = true
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1587700376]
+curve = SubResource("Curve2D_o6xl0")
+
+[node name="PathFollow2D" parent="Path2D" unique_id=1954371928 instance=ExtResource("6_tefeu")]
+position = Vector2(-362, -123)
+
+[node name="Shape1Shoes" type="Sprite2D" parent="." unique_id=58819327]
+position = Vector2(-129, -213)
+scale = Vector2(4, 4)
+texture = ExtResource("8_85g3d")
+
+[node name="Shape2Shoes" type="Sprite2D" parent="." unique_id=1856053475]
+position = Vector2(151, -212)
+scale = Vector2(4, 4)
+texture = ExtResource("9_choun")
+
+[node name="Package1" type="Sprite2D" parent="." unique_id=704817082]
+position = Vector2(-129, 292)
+scale = Vector2(4, 4)
+texture = ExtResource("9_ya4ey")
+
+[node name="Package2" type="Sprite2D" parent="." unique_id=1817859008]
+position = Vector2(151, 293)
+scale = Vector2(4, 4)
+texture = ExtResource("10_eb6dy")
+
+[node name="AreaShape1" parent="." unique_id=2054096900 instance=ExtResource("7_o6xl0")]
+position = Vector2(-128, -122)
+scale = Vector2(1.755, 1.755)
+
+[node name="AreaShape2" parent="." unique_id=2084721597 instance=ExtResource("7_o6xl0")]
+position = Vector2(155, -122)
+scale = Vector2(1.755, 1.755)
+
+[node name="AreaColor1" parent="." unique_id=1040395401 instance=ExtResource("7_o6xl0")]
+position = Vector2(-129, 40)
+scale = Vector2(1.755, 1.755)
+
+[node name="AreaColor2" parent="." unique_id=553605697 instance=ExtResource("7_o6xl0")]
+position = Vector2(154, 40)
+scale = Vector2(1.755, 1.755)
+
+[node name="AreaPackage1" parent="." unique_id=408754018 instance=ExtResource("7_o6xl0")]
+position = Vector2(-136, 203)
+scale = Vector2(1.755, 1.755)
+
+[node name="AreaPackage2" parent="." unique_id=740911416 instance=ExtResource("7_o6xl0")]
+position = Vector2(147, 203)
+scale = Vector2(1.755, 1.755)
+
+[connection signal="timeout" from="ShoesSpawn" to="ShoesSpawner" method="_on_shoes_spawn_timeout"]
