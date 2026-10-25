@@ -84,3 +84,4 @@ func _on_timeout() -> void:
 	timer_text.text = "00:00"
 	timer_text.position = base_position
 	_pulse(1.5)
+	

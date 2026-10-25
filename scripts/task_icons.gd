@@ -17,6 +17,7 @@ var slot_tween: Tween
 var base_position: Vector2
 
 func _ready() -> void:
+	print("hi")
 	base_scale = scale
 	base_position = position
 	if slot:
