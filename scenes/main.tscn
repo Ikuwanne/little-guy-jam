@@ -1094,7 +1094,7 @@ theme_override_constants/shadow_offset_x = -5
 theme_override_constants/shadow_offset_y = 10
 theme_override_fonts/font = ExtResource("12_pm3ni")
 theme_override_font_sizes/font_size = 94
-text = "Score : 0101"
+text = "Score : 0"
 
 [node name="Timer" type="Label" parent="HUD/Control" unique_id=1873272848]
 unique_name_in_owner = true
@@ -1111,10 +1111,10 @@ horizontal_alignment = 1
 
 [node name="Panel" type="Panel" parent="HUD" unique_id=1484386202]
 z_index = 5
-offset_left = -10.0
-offset_top = -6.0
-offset_right = 1153.0
-offset_bottom = 649.0
+offset_left = -12.0
+offset_top = 1.0
+offset_right = 1151.0
+offset_bottom = 656.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_pm3ni")
 
 [node name="Score2" type="Label" parent="HUD/Panel" unique_id=1264548535]
@@ -1125,7 +1125,7 @@ offset_right = 1163.0
 offset_bottom = 191.0
 theme_override_fonts/font = ExtResource("12_pm3ni")
 theme_override_font_sizes/font_size = 94
-text = "Score : 0101"
+text = "Score : 0"
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="HUD/Panel" unique_id=1197763043]
@@ -1139,9 +1139,8 @@ theme_override_font_sizes/font_size = 63
 text = "Restart"
 
 [node name="Dwarf" parent="." unique_id=1056602612 node_paths=PackedStringArray("camera", "area_detector_shape_1", "area_detector_shape_2", "area_detector_color_1", "area_detector_color_2", "area_detector_package_1", "area_detector_package_2") instance=ExtResource("1_o5qli")]
-z_index = 2
 z_as_relative = false
-position = Vector2(2, -47)
+position = Vector2(-126, -9)
 camera = NodePath("../Camera2D")
 area_detector_shape_1 = NodePath("../AreaShape1")
 area_detector_shape_2 = NodePath("../AreaShape2")

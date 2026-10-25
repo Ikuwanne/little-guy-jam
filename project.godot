@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Little-Guy"
-run/main_scene="uid://chkku5q46cdxo"
+run/main_scene="uid://by7o3pl08ji7j"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 Screen="*uid://67ahy544jxgr"
 GlobalVariables="*uid://cx8x8f2egeq0s"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
