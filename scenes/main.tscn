@@ -997,6 +997,7 @@ area_detector_package_2 = NodePath("../AreaPackage2")
 unique_name_in_owner = true
 position = Vector2(38, 26)
 zoom = Vector2(0.81, 0.81)
+offset = Vector2(0, 50)
 
 [node name="Timer" type="Timer" parent="." unique_id=1076778620]
 wait_time = 300.0
