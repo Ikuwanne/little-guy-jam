@@ -964,6 +964,7 @@ area_detector_package_2 = NodePath("../AreaPackage2")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1602877310]
 unique_name_in_owner = true
+offset = Vector2(0, 50)
 
 [node name="Timer" type="Timer" parent="." unique_id=1076778620]
 wait_time = 300.0
