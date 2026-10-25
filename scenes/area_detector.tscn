@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://b4vxo8mievb0"]
 
-[ext_resource type="Texture2D" uid="uid://we3qpy4du020" path="res://assets/PROTOTYPE.png" id="1_6flpi"]
 [ext_resource type="Script" uid="uid://cc42m1mnbtx2y" path="res://scripts/area_detector.gd" id="1_uudbd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uudbd"]
@@ -8,14 +7,6 @@ size = Vector2(68, 64)
 
 [node name="Area2D" type="Area2D" unique_id=2054096900 groups=["area_detector"]]
 script = ExtResource("1_uudbd")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=771927902]
-modulate = Color(1, 1, 1, 0.6117647)
-position = Vector2(-1.9073486e-06, -1.9073486e-06)
-scale = Vector2(4.212, 4.212)
-texture = ExtResource("1_6flpi")
-region_enabled = true
-region_rect = Rect2(0, 0, 16, 16)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1290192261]
 shape = SubResource("RectangleShape2D_uudbd")
