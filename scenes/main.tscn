@@ -5,12 +5,17 @@
 [ext_resource type="Texture2D" uid="uid://lyiflmjw1ivm" path="res://assets/Furnitures/MechanicalBelt.png" id="1_jkv2x"]
 [ext_resource type="Texture2D" uid="uid://bllqxeks7nwbs" path="res://assets/Furnitures/MechanicalBeltRotateRight.png" id="1_muem4"]
 [ext_resource type="PackedScene" uid="uid://34akgyk144u3" path="res://scenes/dwarf.tscn" id="1_o5qli"]
+[ext_resource type="Texture2D" uid="uid://c346nsd3jwcv4" path="res://assets/Furnitures/Floors/blue_present_tower.png" id="1_og1vs"]
 [ext_resource type="Script" uid="uid://blclam4vsj47s" path="res://scripts/game_manager.gd" id="1_y6deb"]
+[ext_resource type="Texture2D" uid="uid://bsi4kurm2ftbp" path="res://assets/Furnitures/Floors/carpet.png" id="1_yq6so"]
+[ext_resource type="Texture2D" uid="uid://s73p2wsjyes" path="res://assets/Furnitures/Floors/blue_present.png" id="2_2wyq8"]
 [ext_resource type="Texture2D" uid="uid://cqb8kllx58wgg" path="res://assets/Furnitures/MechanicalBeltRotatingRight2.png" id="2_dp3eg"]
 [ext_resource type="Texture2D" uid="uid://clrmajn4g4uiy" path="res://assets/Furnitures/Floors/TiledFloor.png" id="2_trceg"]
-[ext_resource type="Texture2D" uid="uid://ce8d6jrqe1scx" path="res://assets/Furnitures/Floors/WoodenFloor2.png" id="3_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://dsbmgrnopaf5r" path="res://assets/Furnitures/Floors/white_present_tower.png" id="3_2wyq8"]
+[ext_resource type="Texture2D" uid="uid://c6wjbtmieceo1" path="res://assets/Furnitures/Floors/WoodenFloor2.png" id="3_a8y0u"]
 [ext_resource type="Script" uid="uid://ca2jhkrpq07mf" path="res://scripts/timer.gd" id="3_sugp2"]
 [ext_resource type="Script" uid="uid://drmn5y2oig8nv" path="res://scripts/shoes_spawner.gd" id="4_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://b5ouffk7bu5fa" path="res://assets/Furnitures/Floors/white_present.png" id="4_vxglm"]
 [ext_resource type="PackedScene" uid="uid://cdjw38io0s5qu" path="res://scenes/shoes.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://dsyss35ne6x10" path="res://scenes/path_follow_2d.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://b4vxo8mievb0" path="res://scenes/area_detector.tscn" id="7_o6xl0"]
@@ -23,6 +28,12 @@
 [ext_resource type="Texture2D" uid="uid://co2cilt8pkg1k" path="res://assets/TaskBar.png" id="20_yc10j"]
 [ext_resource type="Texture2D" uid="uid://ct77cv0ydgn81" path="res://assets/Shoes/BrownBoot.png" id="21_jscy8"]
 [ext_resource type="Script" uid="uid://b7q43atrregp7" path="res://scripts/task_icons.gd" id="22_jscy8"]
+[ext_resource type="Texture2D" uid="uid://dibsgbl26jjoy" path="res://assets/Furnitures/Floors/Desks.png" id="28_2f3dj"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vxglm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2f3dj"]
+size = Vector2(167, 79)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ro3en"]
 atlas = ExtResource("1_muem4")
@@ -623,6 +634,88 @@ point_count = 7
 
 [node name="Main" type="Node2D" unique_id=1002428161]
 
+[node name="Decorations" type="Node2D" parent="." unique_id=1652278604]
+
+[node name="Carpet" type="Sprite2D" parent="Decorations" unique_id=786684581]
+position = Vector2(603, -146)
+scale = Vector2(4, 4)
+texture = ExtResource("1_yq6so")
+
+[node name="Desks" type="Sprite2D" parent="Decorations" unique_id=319836824]
+position = Vector2(599, 403)
+scale = Vector2(4, 4)
+texture = ExtResource("28_2f3dj")
+
+[node name="Present" type="Sprite2D" parent="Decorations" unique_id=1310103074]
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(521, -222)
+scale = Vector2(4, 4)
+texture = ExtResource("1_og1vs")
+
+[node name="Present5" type="Sprite2D" parent="Decorations" unique_id=20172861]
+z_index = 2
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(398, 176)
+scale = Vector2(4, 4)
+texture = ExtResource("1_og1vs")
+
+[node name="Present2" type="Sprite2D" parent="Decorations" unique_id=245817424]
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(625, -170)
+scale = Vector2(4, 4)
+texture = ExtResource("2_2wyq8")
+
+[node name="Present7" type="Sprite2D" parent="Decorations" unique_id=876527021]
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(494, 223)
+scale = Vector2(4, 4)
+texture = ExtResource("2_2wyq8")
+
+[node name="Present3" type="Sprite2D" parent="Decorations" unique_id=575024569]
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(569, -100)
+scale = Vector2(4, 4)
+texture = ExtResource("3_2wyq8")
+
+[node name="Present6" type="Sprite2D" parent="Decorations" unique_id=1718101301]
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(459, 165)
+scale = Vector2(4, 4)
+texture = ExtResource("3_2wyq8")
+
+[node name="Present4" type="Sprite2D" parent="Decorations" unique_id=1881521198]
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(673, -78)
+scale = Vector2(4, 4)
+texture = ExtResource("4_vxglm")
+
+[node name="Present8" type="Sprite2D" parent="Decorations" unique_id=656434374]
+z_index = 2
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(444, 247)
+scale = Vector2(4, 4)
+texture = ExtResource("4_vxglm")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Decorations" unique_id=929528957]
+physics_material_override = SubResource("PhysicsMaterial_vxglm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Decorations/StaticBody2D" unique_id=1837317232]
+position = Vector2(572.5, -168.5)
+shape = SubResource("RectangleShape2D_2f3dj")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Decorations/StaticBody2D" unique_id=590406329]
+position = Vector2(621, -77)
+shape = SubResource("RectangleShape2D_2f3dj")
+
 [node name="GameManager" type="Node2D" parent="." unique_id=198626817 node_paths=PackedStringArray("score_text", "game_finish_panel", "final_score_label")]
 script = ExtResource("1_y6deb")
 score_text = NodePath("../HUD/Control/Score")
@@ -841,16 +934,15 @@ texture = ExtResource("2_trceg")
 stretch_mode = 1
 
 [node name="WoodenFloor2" type="TextureRect" parent="Floors" unique_id=1817470823]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -1344.0
-offset_top = -872.0
-offset_right = -704.0
-offset_bottom = -232.0
+offset_left = -1379.0
+offset_top = -854.0
+offset_right = -739.0
+offset_bottom = -214.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(4, 4)
@@ -963,6 +1055,7 @@ unique_name_in_owner = true
 layout_mode = 0
 offset_right = 1149.0
 offset_bottom = 130.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.6)
 theme_override_fonts/font = ExtResource("12_pm3ni")
 theme_override_font_sizes/font_size = 128
 text = "00:00"
@@ -997,6 +1090,8 @@ theme_override_font_sizes/font_size = 63
 text = "Restart"
 
 [node name="Dwarf" parent="." unique_id=1056602612 node_paths=PackedStringArray("camera", "area_detector_shape_1", "area_detector_shape_2", "area_detector_color_1", "area_detector_color_2", "area_detector_package_1", "area_detector_package_2") instance=ExtResource("1_o5qli")]
+z_as_relative = false
+y_sort_enabled = true
 camera = NodePath("../Camera2D")
 area_detector_shape_1 = NodePath("../AreaShape1")
 area_detector_shape_2 = NodePath("../AreaShape2")
@@ -1008,7 +1103,7 @@ area_detector_package_2 = NodePath("../AreaPackage2")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1602877310]
 unique_name_in_owner = true
 position = Vector2(38, 26)
-offset = Vector2(0, 50)
+offset = Vector2(75, 50)
 zoom = Vector2(0.81, 0.81)
 
 [node name="Timer" type="Timer" parent="." unique_id=1076778620]
