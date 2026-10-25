@@ -6,8 +6,8 @@ extends Timer
 @export var danger_time := 10.0
 
 const COLOR_NORMAL := Color.WHITE
-const COLOR_WARNING := Color("ffb347")
-const COLOR_DANGER := Color("ff4d4d")
+const COLOR_WARNING := Color(0.984, 0.42, 0.114, 1.0)
+const COLOR_DANGER := Color("ae2334ff")
 
 # Force du bump à chaque seconde, selon le palier (0 = normal, 1 = attention, 2 = danger)
 const BUMP_STRENGTH := [1.04, 1.08, 1.18]
@@ -40,12 +40,11 @@ func _process(_delta: float) -> void:
 		current_state = state
 		_on_state_changed(state)
 	
-	# Bump à chaque nouvelle seconde, dans tous les paliers
 	if total != last_second:
 		last_second = total
 		_pulse(BUMP_STRENGTH[state])
+		GlobalVariables.play_sfx("tick", -20)
 	
-	# Shake pendant tout le palier danger, de plus en plus fort
 	if state == 2:
 		var intensity := remap(time_left, danger_time, 0.0, 0.5, 3.0)
 		timer_text.position = base_position + Vector2(

@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://chkku5q46cdxo"]
 
 [ext_resource type="Texture2D" uid="uid://cre4f0jekp3r2" path="res://assets/Furnitures/Floors/WoodenFloor.png" id="1_eb6dy"]
+[ext_resource type="Shader" uid="uid://cku3sjj8uuwpd" path="res://shaders/vignette.gdshader" id="1_fv21b"]
 [ext_resource type="Texture2D" uid="uid://desnde8l8exv3" path="res://assets/Furnitures/MechanicalBeltUp.png" id="1_jbj1t"]
 [ext_resource type="Texture2D" uid="uid://lyiflmjw1ivm" path="res://assets/Furnitures/MechanicalBelt.png" id="1_jkv2x"]
 [ext_resource type="Texture2D" uid="uid://bllqxeks7nwbs" path="res://assets/Furnitures/MechanicalBeltRotateRight.png" id="1_muem4"]
 [ext_resource type="PackedScene" uid="uid://34akgyk144u3" path="res://scenes/dwarf.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://c346nsd3jwcv4" path="res://assets/Furnitures/Floors/blue_present_tower.png" id="1_og1vs"]
+[ext_resource type="AudioStream" uid="uid://byhk6dt33uae4" path="res://assets/musics/FeSTV FRLiX  Royalty Free 8-Bit Christmas Music.mp3" id="1_tel4y"]
 [ext_resource type="Script" uid="uid://blclam4vsj47s" path="res://scripts/game_manager.gd" id="1_y6deb"]
 [ext_resource type="Texture2D" uid="uid://bsi4kurm2ftbp" path="res://assets/Furnitures/Floors/carpet.png" id="1_yq6so"]
 [ext_resource type="Texture2D" uid="uid://s73p2wsjyes" path="res://assets/Furnitures/Floors/blue_present.png" id="2_2wyq8"]
@@ -22,18 +24,36 @@
 [ext_resource type="Texture2D" uid="uid://bng735aey2557" path="res://assets/Shoes/BrownSneaker.png" id="8_0ld40"]
 [ext_resource type="Texture2D" uid="uid://dpn7igvv2tp4o" path="res://assets/Shoes/BrownShoe.png" id="9_gqmmt"]
 [ext_resource type="Texture2D" uid="uid://bkykrxlkstjip" path="res://assets/package_1.png" id="9_ya4ey"]
+[ext_resource type="AudioStream" uid="uid://btj5mby1b11ir" path="res://assets/musics/music_game_over.wav" id="10_5q0nq"]
 [ext_resource type="Texture2D" uid="uid://c4hj40qe364gw" path="res://assets/package_2.png" id="10_eb6dy"]
 [ext_resource type="FontFile" uid="uid://2ykopy1fg2hv" path="res://assets/CutePixel.ttf" id="12_pm3ni"]
 [ext_resource type="Texture2D" uid="uid://s7xorpj2bhg3" path="res://assets/Furnitures/chépa.png" id="19_0ld40"]
 [ext_resource type="Texture2D" uid="uid://co2cilt8pkg1k" path="res://assets/TaskBar.png" id="20_yc10j"]
 [ext_resource type="Texture2D" uid="uid://ct77cv0ydgn81" path="res://assets/Shoes/BrownBoot.png" id="21_jscy8"]
 [ext_resource type="Script" uid="uid://b7q43atrregp7" path="res://scripts/task_icons.gd" id="22_jscy8"]
+[ext_resource type="AudioStream" uid="uid://dss0b6fnod2hc" path="res://assets/sfx/Walk.mp3" id="27_qkpxi"]
 [ext_resource type="Texture2D" uid="uid://dibsgbl26jjoy" path="res://assets/Furnitures/Floors/Desks.png" id="28_2f3dj"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vxglm"]
+[sub_resource type="Environment" id="Environment_yq6so"]
+background_mode = 3
+adjustment_enabled = true
+adjustment_contrast = 1.155
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2f3dj"]
-size = Vector2(167, 79)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tel4y"]
+shader = ExtResource("1_fv21b")
+shader_parameter/color = Color(0.17543635, 0.16116306, 0.25881326, 1)
+shader_parameter/alpha = 0.665
+shader_parameter/inner_radius = 0.395
+shader_parameter/outer_radius = 1.035
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fv21b"]
+size = Vector2(101, 150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tel4y"]
+size = Vector2(37, 79)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qkpxi"]
+size = Vector2(58, 69)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ro3en"]
 atlas = ExtResource("1_muem4")
@@ -632,12 +652,33 @@ _data = {
 }
 point_count = 7
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5q0nq"]
+size = Vector2(1496, 162)
+
 [node name="Main" type="Node2D" unique_id=1002428161]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1944574437]
+stream = ExtResource("1_tel4y")
+volume_db = -34.867
+autoplay = true
+parameters/looping = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1724078683]
+environment = SubResource("Environment_yq6so")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1886530625]
+z_index = 3
+material = SubResource("ShaderMaterial_tel4y")
+offset_left = -669.0
+offset_top = -369.0
+offset_right = 822.0
+offset_bottom = 465.0
+color = Color(0, 0, 0, 1)
 
 [node name="Decorations" type="Node2D" parent="." unique_id=1652278604]
 
 [node name="Carpet" type="Sprite2D" parent="Decorations" unique_id=786684581]
-position = Vector2(603, -146)
+position = Vector2(-566, -200)
 scale = Vector2(4, 4)
 texture = ExtResource("1_yq6so")
 
@@ -649,13 +690,12 @@ texture = ExtResource("28_2f3dj")
 [node name="Present" type="Sprite2D" parent="Decorations" unique_id=1310103074]
 z_as_relative = false
 y_sort_enabled = true
-position = Vector2(521, -222)
+position = Vector2(-648, -276)
 scale = Vector2(4, 4)
 texture = ExtResource("1_og1vs")
 
 [node name="Present5" type="Sprite2D" parent="Decorations" unique_id=20172861]
-z_index = 2
-z_as_relative = false
+z_index = 1
 y_sort_enabled = true
 position = Vector2(398, 176)
 scale = Vector2(4, 4)
@@ -664,13 +704,11 @@ texture = ExtResource("1_og1vs")
 [node name="Present2" type="Sprite2D" parent="Decorations" unique_id=245817424]
 z_as_relative = false
 y_sort_enabled = true
-position = Vector2(625, -170)
+position = Vector2(-544, -224)
 scale = Vector2(4, 4)
 texture = ExtResource("2_2wyq8")
 
 [node name="Present7" type="Sprite2D" parent="Decorations" unique_id=876527021]
-z_index = 1
-z_as_relative = false
 y_sort_enabled = true
 position = Vector2(494, 223)
 scale = Vector2(4, 4)
@@ -679,12 +717,11 @@ texture = ExtResource("2_2wyq8")
 [node name="Present3" type="Sprite2D" parent="Decorations" unique_id=575024569]
 z_as_relative = false
 y_sort_enabled = true
-position = Vector2(569, -100)
+position = Vector2(-600, -154)
 scale = Vector2(4, 4)
 texture = ExtResource("3_2wyq8")
 
 [node name="Present6" type="Sprite2D" parent="Decorations" unique_id=1718101301]
-z_as_relative = false
 y_sort_enabled = true
 position = Vector2(459, 165)
 scale = Vector2(4, 4)
@@ -693,35 +730,40 @@ texture = ExtResource("3_2wyq8")
 [node name="Present4" type="Sprite2D" parent="Decorations" unique_id=1881521198]
 z_as_relative = false
 y_sort_enabled = true
-position = Vector2(673, -78)
+position = Vector2(-496, -132)
 scale = Vector2(4, 4)
 texture = ExtResource("4_vxglm")
 
 [node name="Present8" type="Sprite2D" parent="Decorations" unique_id=656434374]
-z_index = 2
-z_as_relative = false
+z_index = 1
 y_sort_enabled = true
 position = Vector2(444, 247)
 scale = Vector2(4, 4)
 texture = ExtResource("4_vxglm")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Decorations" unique_id=929528957]
-physics_material_override = SubResource("PhysicsMaterial_vxglm")
+[node name="StaticBody2D" type="StaticBody2D" parent="Decorations" unique_id=1483940143]
+position = Vector2(432, 170)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Decorations/StaticBody2D" unique_id=1837317232]
-position = Vector2(572.5, -168.5)
-shape = SubResource("RectangleShape2D_2f3dj")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Decorations/StaticBody2D" unique_id=290282149]
+position = Vector2(5.5, 2)
+shape = SubResource("RectangleShape2D_fv21b")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Decorations/StaticBody2D" unique_id=590406329]
-position = Vector2(621, -77)
-shape = SubResource("RectangleShape2D_2f3dj")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Decorations/StaticBody2D" unique_id=1693378312]
+position = Vector2(74.5, 48.5)
+shape = SubResource("RectangleShape2D_tel4y")
 
-[node name="GameManager" type="Node2D" parent="." unique_id=198626817 node_paths=PackedStringArray("score_text", "game_finish_panel", "final_score_label")]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Decorations/StaticBody2D" unique_id=975753191]
+position = Vector2(13, 70)
+shape = SubResource("RectangleShape2D_qkpxi")
+
+[node name="GameManager" type="Node2D" parent="." unique_id=198626817 node_paths=PackedStringArray("score_text", "game_finish_panel", "final_score_label", "music_player")]
 script = ExtResource("1_y6deb")
 score_text = NodePath("../HUD/Control/Score")
 game_finish_panel = NodePath("../HUD/Panel")
 final_score_label = NodePath("../HUD/Panel/Score2")
 animation_duration = 2.5
+music_player = NodePath("../AudioStreamPlayer")
+end_music = ExtResource("10_5q0nq")
 
 [node name="Furniture" type="Node2D" parent="." unique_id=1992415482]
 z_index = -1
@@ -900,6 +942,7 @@ texture = ExtResource("19_0ld40")
 z_index = -10
 
 [node name="TiledFloor" type="TextureRect" parent="Floors" unique_id=779782878]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -975,17 +1018,17 @@ texture = ExtResource("10_eb6dy")
 
 [node name="TaskBar" type="Sprite2D" parent="HUD" unique_id=1689008546]
 position = Vector2(84, 174)
-scale = Vector2(12.000002, 12.000002)
+scale = Vector2(5, 5)
 texture = ExtResource("20_yc10j")
 
 [node name="TaskBar2" type="Sprite2D" parent="HUD" unique_id=1495753796]
 position = Vector2(84, 303)
-scale = Vector2(12.000002, 12.000002)
+scale = Vector2(5, 5)
 texture = ExtResource("20_yc10j")
 
 [node name="TaskBar3" type="Sprite2D" parent="HUD" unique_id=214554609]
 position = Vector2(84, 433)
-scale = Vector2(12.000002, 12.000002)
+scale = Vector2(5, 5)
 texture = ExtResource("20_yc10j")
 
 [node name="NextShoe1" type="Sprite2D" parent="HUD" unique_id=1802958711 node_paths=PackedStringArray("package_sprite", "slot")]
@@ -1046,6 +1089,9 @@ offset_left = 26.0
 offset_top = 532.0
 offset_right = 439.0
 offset_bottom = 643.0
+theme_override_colors/font_shadow_color = Color(0.4745098, 0.19607843, 0.16078432, 0.6)
+theme_override_constants/shadow_offset_x = -5
+theme_override_constants/shadow_offset_y = 10
 theme_override_fonts/font = ExtResource("12_pm3ni")
 theme_override_font_sizes/font_size = 94
 text = "Score : 0101"
@@ -1055,7 +1101,9 @@ unique_name_in_owner = true
 layout_mode = 0
 offset_right = 1149.0
 offset_bottom = 130.0
-theme_override_colors/font_color = Color(1, 1, 1, 0.6)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.24882513, 0.18863532, 0.25383115, 1)
+theme_override_constants/outline_size = 22
 theme_override_fonts/font = ExtResource("12_pm3ni")
 theme_override_font_sizes/font_size = 128
 text = "00:00"
@@ -1071,13 +1119,14 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_pm3ni")
 
 [node name="Score2" type="Label" parent="HUD/Panel" unique_id=1264548535]
 layout_mode = 0
-offset_left = 389.0
+offset_left = 1.0
 offset_top = 61.0
-offset_right = 802.0
-offset_bottom = 172.0
+offset_right = 1163.0
+offset_bottom = 191.0
 theme_override_fonts/font = ExtResource("12_pm3ni")
 theme_override_font_sizes/font_size = 94
 text = "Score : 0101"
+horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="HUD/Panel" unique_id=1197763043]
 layout_mode = 0
@@ -1090,8 +1139,9 @@ theme_override_font_sizes/font_size = 63
 text = "Restart"
 
 [node name="Dwarf" parent="." unique_id=1056602612 node_paths=PackedStringArray("camera", "area_detector_shape_1", "area_detector_shape_2", "area_detector_color_1", "area_detector_color_2", "area_detector_package_1", "area_detector_package_2") instance=ExtResource("1_o5qli")]
+z_index = 2
 z_as_relative = false
-y_sort_enabled = true
+position = Vector2(2, -47)
 camera = NodePath("../Camera2D")
 area_detector_shape_1 = NodePath("../AreaShape1")
 area_detector_shape_2 = NodePath("../AreaShape2")
@@ -1100,14 +1150,18 @@ area_detector_color_2 = NodePath("../AreaColor2")
 area_detector_package_1 = NodePath("../AreaPackage1")
 area_detector_package_2 = NodePath("../AreaPackage2")
 
+[node name="StepSound" type="AudioStreamPlayer" parent="Dwarf" unique_id=1924197329]
+stream = ExtResource("27_qkpxi")
+volume_db = -10.0
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1602877310]
 unique_name_in_owner = true
-position = Vector2(38, 26)
-offset = Vector2(75, 50)
-zoom = Vector2(0.81, 0.81)
+position = Vector2(-5, -3)
+offset = Vector2(74.6, 50)
+zoom = Vector2(0.78, 0.78)
 
 [node name="Timer" type="Timer" parent="." unique_id=1076778620]
-wait_time = 300.0
+wait_time = 180.0
 one_shot = true
 autostart = true
 script = ExtResource("3_sugp2")
@@ -1158,6 +1212,27 @@ scale = Vector2(1.755, 1.755)
 [node name="AreaPackage2" parent="." unique_id=740911416 instance=ExtResource("7_o6xl0")]
 position = Vector2(147, 203)
 scale = Vector2(1.755, 1.755)
+
+[node name="Limits" type="StaticBody2D" parent="." unique_id=159819949]
+position = Vector2(-147, 412)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limits" unique_id=736035885]
+position = Vector2(220, 16)
+shape = SubResource("RectangleShape2D_5q0nq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Limits" unique_id=969633956]
+position = Vector2(229, -721)
+shape = SubResource("RectangleShape2D_5q0nq")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Limits" unique_id=2095966925]
+position = Vector2(-460, -410)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_5q0nq")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Limits" unique_id=1180998650]
+position = Vector2(887, -401)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_5q0nq")
 
 [connection signal="pressed" from="HUD/Panel/Button" to="GameManager" method="_on_button_pressed"]
 [connection signal="timeout" from="Timer" to="GameManager" method="_on_timer_timeout"]
