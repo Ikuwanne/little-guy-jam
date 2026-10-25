@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://cdjw38io0s5qu"]
 
+[ext_resource type="Script" uid="uid://b7a13yi8vcje5" path="res://scripts/shoes.gd" id="1_epubc"]
 [ext_resource type="Texture2D" uid="uid://ct77cv0ydgn81" path="res://assets/Shoes/BrownBoot.png" id="1_mwu84"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mwu84"]
 size = Vector2(67, 61)
 
 [node name="Shoes" type="Area2D" unique_id=1846985219 groups=["shoes"]]
+script = ExtResource("1_epubc")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1523156895]
 position = Vector2(-0.0049772263, -0.25497818)

@@ -1,14 +1,86 @@
 extends Timer
 
 @onready var timer_text: Label = %Timer
-# Called when the node enters the scene tree for the first time.
+
+@export var warning_time := 30.0
+@export var danger_time := 10.0
+
+const COLOR_NORMAL := Color.WHITE
+const COLOR_WARNING := Color("ffb347")
+const COLOR_DANGER := Color("ff4d4d")
+
+# Force du bump à chaque seconde, selon le palier (0 = normal, 1 = attention, 2 = danger)
+const BUMP_STRENGTH := [1.04, 1.08, 1.18]
+
+var base_position: Vector2
+var last_second := -1
+var current_state := 0
+var pulse_tween: Tween
+var color_tween: Tween
+
 func _ready() -> void:
-	pass # Replace with function body.
+	base_position = timer_text.position
+	timeout.connect(_on_timeout)
 
+func _process(_delta: float) -> void:
+	if is_stopped():
+		return
+	
+	var total := ceili(time_left)
+	timer_text.text = "%02d:%02d" % [int(total / 60.0), total % 60]
+	timer_text.pivot_offset = timer_text.size / 2.0
+	
+	var state := 0
+	if time_left <= danger_time:
+		state = 2
+	elif time_left <= warning_time:
+		state = 1
+	
+	if state != current_state:
+		current_state = state
+		_on_state_changed(state)
+	
+	# Bump à chaque nouvelle seconde, dans tous les paliers
+	if total != last_second:
+		last_second = total
+		_pulse(BUMP_STRENGTH[state])
+	
+	# Shake pendant tout le palier danger, de plus en plus fort
+	if state == 2:
+		var intensity := remap(time_left, danger_time, 0.0, 0.5, 3.0)
+		timer_text.position = base_position + Vector2(
+			randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * intensity
+	else:
+		timer_text.position = base_position
 
-func _process(delta: float) -> void:
-	var minute: int = int(time_left / 60)
-	var seconde: int = int(time_left) % 60
-	timer_text.text = "%02d:%02d" % [minute, seconde]
-	#JE L'AI CODER MOI MEME HEHEHEH
-	#J'ai pris 10 min a le faire :') 
+func _on_state_changed(state: int) -> void:
+	var target := COLOR_NORMAL
+	if state == 1:
+		target = COLOR_WARNING
+	elif state == 2:
+		target = COLOR_DANGER
+	
+	if color_tween and color_tween.is_valid():
+		color_tween.kill()
+	color_tween = create_tween()
+	color_tween.tween_property(timer_text, "modulate", target, 0.4)\
+		.set_trans(Tween.TRANS_SINE)
+	
+	# Pop plus marqué quand on entre dans un nouveau palier
+	if state > 0:
+		_pulse(1.25)
+
+func _pulse(strength: float) -> void:
+	if pulse_tween and pulse_tween.is_valid():
+		pulse_tween.kill()
+	timer_text.scale = Vector2.ONE
+	pulse_tween = create_tween()
+	pulse_tween.tween_property(timer_text, "scale", Vector2.ONE * strength, 0.08)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	pulse_tween.tween_property(timer_text, "scale", Vector2.ONE, 0.25)\
+		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+
+func _on_timeout() -> void:
+	timer_text.text = "00:00"
+	timer_text.position = base_position
+	_pulse(1.5)

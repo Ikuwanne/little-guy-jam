@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://lyiflmjw1ivm" path="res://assets/Furnitures/MechanicalBelt.png" id="1_jkv2x"]
 [ext_resource type="Texture2D" uid="uid://bllqxeks7nwbs" path="res://assets/Furnitures/MechanicalBeltRotateRight.png" id="1_muem4"]
 [ext_resource type="PackedScene" uid="uid://34akgyk144u3" path="res://scenes/dwarf.tscn" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://blclam4vsj47s" path="res://scripts/game_manager.gd" id="1_y6deb"]
 [ext_resource type="Texture2D" uid="uid://cqb8kllx58wgg" path="res://assets/Furnitures/MechanicalBeltRotatingRight2.png" id="2_dp3eg"]
 [ext_resource type="Texture2D" uid="uid://clrmajn4g4uiy" path="res://assets/Furnitures/Floors/TiledFloor.png" id="2_trceg"]
 [ext_resource type="Texture2D" uid="uid://ce8d6jrqe1scx" path="res://assets/Furnitures/Floors/WoodenFloor2.png" id="3_a8y0u"]
@@ -614,11 +615,16 @@ animations = [{
 
 [sub_resource type="Curve2D" id="Curve2D_o6xl0"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -362, -123, 0, 0, 0, 0, 356, -120, 0, 0, 0, 0, 356, 39, 0, 0, 0, 0, -362, 37, 0, 0, 0, 0, -362, 199, 0, 0, 0, 0, 358, 198)
+"points": PackedVector2Array(0, 0, 0, 0, -322.70612, -154, 0, 0, 0, 0, 308.26123, -153, 0, 0, 0, 0, 311.96735, 37, 0, 0, 0, 0, 305.48163, 20, 0, 0, 0, 0, -314.36734, 22, 0, 0, 0, 0, -318.07346, 180, 0, 0, 0, 0, 354.58774, 178)
 }
-point_count = 6
+point_count = 7
 
 [node name="Main" type="Node2D" unique_id=1002428161]
+
+[node name="GameManager" type="Node2D" parent="." unique_id=198626817 node_paths=PackedStringArray("score_text")]
+script = ExtResource("1_y6deb")
+score_text = NodePath("../HUD/Control/Score")
+animation_duration = 2.5
 
 [node name="Furniture" type="Node2D" parent="." unique_id=1992415482]
 z_index = -1
@@ -886,31 +892,37 @@ position = Vector2(84, 433)
 scale = Vector2(12.000002, 12.000002)
 texture = ExtResource("20_yc10j")
 
-[node name="NextShoe1" type="Sprite2D" parent="HUD" unique_id=1802958711]
+[node name="NextShoe1" type="Sprite2D" parent="HUD" unique_id=1802958711 node_paths=PackedStringArray("package_sprite", "slot")]
 position = Vector2(85, 176)
 scale = Vector2(5, 5)
 texture = ExtResource("21_jscy8")
 script = ExtResource("22_jscy8")
+package_sprite = NodePath("Packaging")
+slot = NodePath("../TaskBar")
 
 [node name="Packaging" type="Sprite2D" parent="HUD/NextShoe1" unique_id=788200868]
 modulate = Color(1, 1, 1, 0.30588236)
 
-[node name="NextShoe2" type="Sprite2D" parent="HUD" unique_id=1128796677]
+[node name="NextShoe2" type="Sprite2D" parent="HUD" unique_id=1128796677 node_paths=PackedStringArray("package_sprite", "slot")]
 position = Vector2(89.00003, 305)
 scale = Vector2(5, 5)
 texture = ExtResource("21_jscy8")
 script = ExtResource("22_jscy8")
 task_id = 1
+package_sprite = NodePath("Packaging")
+slot = NodePath("../TaskBar2")
 
 [node name="Packaging" type="Sprite2D" parent="HUD/NextShoe2" unique_id=1571529177]
 modulate = Color(1, 1, 1, 0.30588236)
 
-[node name="NextShoe3" type="Sprite2D" parent="HUD" unique_id=954266085]
+[node name="NextShoe3" type="Sprite2D" parent="HUD" unique_id=954266085 node_paths=PackedStringArray("package_sprite", "slot")]
 position = Vector2(85, 433.00003)
 scale = Vector2(5, 5)
 texture = ExtResource("21_jscy8")
 script = ExtResource("22_jscy8")
 task_id = 2
+package_sprite = NodePath("Packaging")
+slot = NodePath("../TaskBar3")
 
 [node name="Packaging" type="Sprite2D" parent="HUD/NextShoe3" unique_id=770159182]
 modulate = Color(1, 1, 1, 0.30588236)
@@ -923,15 +935,15 @@ offset_top = -1.0
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="Score2" type="Label" parent="HUD/Control" unique_id=334611799]
+[node name="Score" type="Label" parent="HUD/Control" unique_id=334611799]
 layout_mode = 0
-offset_left = 13.0
-offset_top = 529.0
-offset_right = 639.0
-offset_bottom = 640.0
+offset_left = 26.0
+offset_top = 532.0
+offset_right = 439.0
+offset_bottom = 643.0
 theme_override_fonts/font = ExtResource("12_pm3ni")
 theme_override_font_sizes/font_size = 94
-text = "Score"
+text = "Score : 0101"
 
 [node name="Timer" type="Label" parent="HUD/Control" unique_id=1873272848]
 unique_name_in_owner = true
@@ -939,19 +951,38 @@ layout_mode = 0
 offset_right = 1149.0
 offset_bottom = 130.0
 theme_override_fonts/font = ExtResource("12_pm3ni")
-theme_override_font_sizes/font_size = 61
+theme_override_font_sizes/font_size = 128
 text = "00:00"
 horizontal_alignment = 1
-
-[node name="Score" type="Label" parent="HUD/Control" unique_id=701728563]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
 
 [node name="SpaceInteraction" type="Sprite2D" parent="HUD" unique_id=1007271085]
 position = Vector2(1086, 583)
 scale = Vector2(5.4999995, 5.4999995)
 texture = ExtResource("17_pm3ni")
+
+[node name="Panel" type="Panel" parent="HUD" unique_id=1484386202]
+offset_left = 2.0
+offset_top = 650.0
+offset_right = 1165.0
+offset_bottom = 1305.0
+
+[node name="Score2" type="Label" parent="HUD/Panel" unique_id=1264548535]
+layout_mode = 0
+offset_left = 389.0
+offset_top = 61.0
+offset_right = 802.0
+offset_bottom = 172.0
+theme_override_fonts/font = ExtResource("12_pm3ni")
+theme_override_font_sizes/font_size = 94
+text = "Score : 0101"
+
+[node name="Button" type="Button" parent="HUD/Panel" unique_id=1197763043]
+layout_mode = 0
+offset_left = 367.0
+offset_top = 234.0
+offset_right = 818.0
+offset_bottom = 295.0
+text = "Restart"
 
 [node name="Dwarf" parent="." unique_id=1056602612 node_paths=PackedStringArray("camera", "area_detector_shape_1", "area_detector_shape_2", "area_detector_color_1", "area_detector_color_2", "area_detector_package_1", "area_detector_package_2") instance=ExtResource("1_o5qli")]
 camera = NodePath("../Camera2D")
@@ -964,15 +995,19 @@ area_detector_package_2 = NodePath("../AreaPackage2")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1602877310]
 unique_name_in_owner = true
+position = Vector2(38, 26)
+zoom = Vector2(0.81, 0.81)
 
 [node name="Timer" type="Timer" parent="." unique_id=1076778620]
 wait_time = 300.0
 one_shot = true
 autostart = true
 script = ExtResource("3_sugp2")
+warning_time = 60.0
+danger_time = 30.0
 
 [node name="ShoesSpawner" type="Marker2D" parent="." unique_id=1663086855 node_paths=PackedStringArray("path")]
-position = Vector2(-359, -122)
+position = Vector2(-323, -158)
 script = ExtResource("4_jyhfs")
 shoes = ExtResource("5_tbgi4")
 path_follower = ExtResource("6_tefeu")
@@ -983,10 +1018,12 @@ wait_time = 5.0
 autostart = true
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1587700376]
+position = Vector2(25.295166, 0)
+scale = Vector2(1.0792952, 1)
 curve = SubResource("Curve2D_o6xl0")
 
 [node name="PathFollow2D" parent="Path2D" unique_id=1954371928 instance=ExtResource("6_tefeu")]
-position = Vector2(-362, -123)
+position = Vector2(-322.70612, -154)
 
 [node name="AreaShape1" parent="." unique_id=2054096900 instance=ExtResource("7_o6xl0")]
 position = Vector2(-128, -122)
@@ -1014,4 +1051,5 @@ scale = Vector2(1.755, 1.755)
 position = Vector2(147, 203)
 scale = Vector2(1.755, 1.755)
 
+[connection signal="timeout" from="Timer" to="GameManager" method="_on_timer_timeout"]
 [connection signal="timeout" from="ShoesSpawn" to="ShoesSpawner" method="_on_shoes_spawn_timeout"]

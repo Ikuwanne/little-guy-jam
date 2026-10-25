@@ -144,6 +144,7 @@ size = Vector2(68, 64)
 
 [node name="Dwarf" type="CharacterBody2D" unique_id=1056602612 groups=["player"]]
 script = ExtResource("1_wi5fx")
+speed = 300
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=137047203]
 position = Vector2(0, -35)
