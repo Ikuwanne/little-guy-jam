@@ -38,8 +38,10 @@ func _process(delta: float) -> void:
 		var shoe_id = (shoe_color * 9) + (shoe_type * 3) + package - 2
 		
 		if GlobalVariables.validate_shoe(shoe_id):
+			GlobalVariables.play_sfx("good", 2)
 			GlobalVariables.score += 10
 		else:
+			GlobalVariables.play_sfx("bad", -3)
 			if GlobalVariables.score <= 0:
 				penalty_at_zero.emit()
 			else:

@@ -12,6 +12,9 @@ var finished := false
 
 @export_range(0.2, 4.0, 0.05) var animation_duration := 1.0
 
+@export var music_player: AudioStreamPlayer
+@export var end_music: AudioStream 
+
 const COLOR_GAIN := Color("ffb800ff")
 const COLOR_LOSS := Color("c3001eff")
 
@@ -31,7 +34,6 @@ func _ready() -> void:
 	_update_text(displayed_score)
 	panel_base_position = game_finish_panel.position
 	game_finish_panel.visible = false
-	# Pour que les tweens tournent même si tu mets le jeu en pause à la fin
 	game_finish_panel.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _process(_delta: float) -> void:
@@ -43,8 +45,25 @@ func _process(_delta: float) -> void:
 		last_score = score
 		_on_score_changed(gain)
 		
+	if Input.is_action_just_pressed("Escape"):
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+		
 
-
+func _play_end_music() -> void:
+	music_player.process_mode = Node.PROCESS_MODE_ALWAYS
+	
+	var tween := create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	
+	tween.tween_property(music_player, "volume_db", -40.0, 0.4)
+	
+	tween.tween_callback(func():
+		music_player.stream = end_music
+		music_player.play()
+	)
+	
+	tween.tween_property(music_player, "volume_db", 0.0, 0.4)
+	
 func _update_text(value: int) -> void:
 	displayed_score = value
 	score_text.text = "Score : %d" % value
@@ -132,12 +151,12 @@ func _on_timer_timeout() -> void:
 		return
 	finished = true
 	get_tree().paused = true
+	_play_end_music()
 	_show_finish_panel()
 
 func _show_finish_panel() -> void:
 	var final_score: int = GlobalVariables.score
 	
-	# État de départ : panneau hors écran (au-dessus), score à 0
 	game_finish_panel.visible = true
 	game_finish_panel.position = Vector2(panel_base_position.x, -game_finish_panel.size.y - 40.0)
 	final_score_label.text = "Score : 0"
