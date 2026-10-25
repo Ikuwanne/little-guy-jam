@@ -114,8 +114,10 @@ func _process(delta):
 	
 	if shoe_id in [2,5,8,11,14,17,20,23,26]:
 		self.get_child(0).texture = preload("res://assets/package_1.png")
-	if shoe_id in [3,6,9,12,15,18,21,24,27]:
+	elif shoe_id in [3,6,9,12,15,18,21,24,27]:
 		self.get_child(0).texture = preload("res://assets/package_2.png")
+	else:
+		self.get_child(0).texture = preload("res://assets/package_0.png")
 	
 	if shoe_id in [1,2,3]:
 		self.texture = preload("res://assets/Shoes/BrownBoot.png")
