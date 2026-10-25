@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b7a13yi8vcje5" path="res://scripts/shoes.gd" id="1_epubc"]
 [ext_resource type="Texture2D" uid="uid://ct77cv0ydgn81" path="res://assets/Shoes/BrownBoot.png" id="1_mwu84"]
+[ext_resource type="Texture2D" uid="uid://bvcif0lrabdau" path="res://assets/package_0.png" id="2_epubc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mwu84"]
 size = Vector2(67, 61)
@@ -19,6 +20,7 @@ region_rect = Rect2(16, 0, 16, 16)
 modulate = Color(1, 1, 1, 0.5254902)
 position = Vector2(-1.0000076, -6.999998)
 scale = Vector2(5.895, 5.895)
+texture = ExtResource("2_epubc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1845989361]
 position = Vector2(-1, 1.5)
